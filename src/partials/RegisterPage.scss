@@ -3,7 +3,7 @@
 $primary-font: 'Poppins', sans-serif;
 $primary-color: #9b59b6;
 $secondary-color: #71b7e6;
-$background-gradient: linear-gradient(135deg, $secondary-color, $primary-color);
+$background-gradient: linear-gradient(135deg, #1F214D, #50366F,#BF3475, #EE6C45, #FFCE61,#FFE58A);
 
 * {
   margin: 0;
@@ -13,15 +13,17 @@ $background-gradient: linear-gradient(135deg, $secondary-color, $primary-color);
 }
 
 body {
+  width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background: $background-gradient;
+  background: url("../../public/assets/register.jpg") center;
+  background-size: cover;
 }
 
-.container {
+.register_container {
   max-width: 700px;
   width: 100%;
   background-color: #fff;
@@ -30,24 +32,30 @@ body {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 
   .title {
+    display: flex;
+    justify-content: center;
     font-size: 25px;
     font-weight: 500;
     position: relative;
 
+
     &::before {
       content: "";
       position: absolute;
-      left: 0;
       bottom: 0;
       height: 3px;
-      width: 30px;
+      width: 50%;
       border-radius: 5px;
       background: $background-gradient;
     }
   }
 }
 
-.content {
+.register_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   form {
     .user-details {
       display: flex;
@@ -84,45 +92,32 @@ body {
       }
     }
 
-    .gender-details {
-      .gender-title {
-        font-size: 20px;
-        font-weight: 500;
-      }
-
-      .category {
-        display: flex;
-        width: 80%;
-        margin: 14px 0;
-        justify-content: space-between;
-
-        label {
-          display: flex;
-          align-items: center;
-          cursor: pointer;
-
-          .dot {
-            height: 18px;
-            width: 18px;
-            border-radius: 50%;
-            margin-right: 10px;
-            background: #d9d9d9;
-            border: 5px solid transparent;
-            transition: all 0.3s ease;
-          }
-        }
-
-        #dot-1:checked ~ .one,
-        #dot-2:checked ~ .two,
-        #dot-3:checked ~ .three {
-          background: $primary-color;
-          border-color: #d9d9d9;
-        }
-      }
-    }
-
     input[type="radio"] {
       display: none;
+    }
+
+    .profile-picture {
+      border-radius: 5px;
+      border: solid;
+      border-color: $background-gradient;
+      width: 60%;
+      margin: auto;
+
+      label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        p {
+          margin: 5px;
+        }
+
+        img {
+          margin: 5px;
+        }
+
+      }
     }
 
     .button {
@@ -143,47 +138,79 @@ body {
         background: $background-gradient;
 
         &:hover {
-          background: linear-gradient(-135deg, $secondary-color, $primary-color);
+          background: linear-gradient(-135deg,  #1F214D, #50366F,#BF3475, #EE6C45, #FFCE61,#FFE58A);
         }
       }
     }
+
+    .already-signeUP {
+      font-size: 18px;
+      font-weight: 500;
+    }
+
   }
+
 }
 
+// media queries for mobile responsiveness
 @media (max-width: 584px) {
-  .container {
+  body {
+    height: 100vh;
+  }
+
+  .register_container {
     max-width: 100%;
+    max-height: 80%;
   }
 
   form {
+
     .user-details {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
       .input-box {
-        margin-bottom: 15px;
-        width: 100%;
+        input {
+          width: 100%;
+          margin: auto;
+        }
       }
-    }
-
-    .category {
-      width: 100%;
     }
 
     .user-details {
-      max-height: 300px;
-      overflow-y: scroll;
-
-      &::-webkit-scrollbar {
-        width: 5px;
-      }
+      width: 100%;
     }
   }
 }
 
-@media (max-width: 459px) {
-  .container {
-    .content {
-      .category {
-        flex-direction: column;
+@media (max-width: 375px) {
+  body {
+    height: 100vh;
+  }
+
+  .register_container {
+    max-width: 100%;
+    max-height: 80%;
+  }
+
+  form {
+
+    .user-details {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .input-box {
+        input {
+          width: 100%;
+          margin: auto;
+        }
       }
+    }
+
+    .user-details {
+      width: 100%;
     }
   }
 }

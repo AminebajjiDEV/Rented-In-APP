@@ -1,6 +1,6 @@
-import React from 'react'
-import { useState } from 'react'
-import "../partials/RegisterPage.scss"
+import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import "../partials/RegisterPage.scss";
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -10,65 +10,114 @@ const RegisterPage = () => {
     phoneNumber: "",
     password: "",
     confirmPassword: "",
-    porfilePicutre: null
+    profilePicture: null
   });
+
+  const [passwordMatch, setPasswordMatch] = useState(true);
+
+  const navigate = useNavigate();
+
   console.log(formData)
 
   const handleChange = (e) => {
     const { name, value, files } = e.target
-    setFormData({
+    setFormData((formData) => ({
       ...formData, // to collect & keep a copy of the data inputed
-      [name]: value,
-      [name]: name === "profileImage" ? files[0] : value
-    })
+      [name]: name === "profilePicture" ? files[0] : value,
+    }));
+  };
+
+  /* TO VERIFY IF THAT "password" INPUTED IS EQUAL TO "confirmPassword" */
+
+  useEffect(() => {
+    setPasswordMatch(
+      formData.password === formData.confirmPassword || formData.confirmPassword === "");
+  }, [formData.password, formData.confirmPassword]);
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const register_form = new FormData()
+
+      for (var key in formData) {
+        register_form.append(key, formData[key])
+      }
+
+      const response = await fetch("http://localhost:3001/auth/register", {
+        method: "POST",
+        body: register_form
+      })
+
+      if (response.ok) {
+        navigate("/login")
+      }
+    } catch (err) {
+      console.log("Registration failed", err.message)
+    }
+
   }
+
+
+  // HTML 
+
   return (
     <div className="register">
-      <div class="register_container">
-        <div class="title">Registration</div>
-        <div class="register_content">
-          <form action="#">
-            <div class="user-details">
-              <div class="input-box">{/* Last Name */}
-                <span class="details" >Last Name</span>
-                <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Enter your last name" required></input>
+      <div className="register_container">
+        <div className="title">Registration</div>
+        <div className="register_content">
+          <form className="register_content_form" onSubmit={handleSubmit}>
+            <div className="user-details">
+              <div className="input-box">{/* Last Name */}
+                <span className="details" >Last Name</span>
+                <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Enter your last name" required />
               </div>
-              <div class="input-box">{/* First Name */}
-                <span class="details" >First Name</span>
-                <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="Enter your first name" required></input>
+              <div className="input-box">{/* First Name */}
+                <span className="details" >First Name</span>
+                <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="Enter your first name" required />
               </div>
-              <div class="input-box">{/* Email */}
-                <span class="details" >Email</span>
-                <input type="text" name="email" value={formData.email} onChange={handleChange} placeholder="Enter your email" required></input>
+              <div className="input-box">{/* Email */}
+                <span className="details" >Email</span>
+                <input type="text" name="email" value={formData.email} onChange={handleChange} placeholder="Enter your email" required />
               </div>
-              <div class="input-box">{/* Phone Number */}
-                <span class="details" >Phone Number</span>
-                <input type="tel" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} placeholder="Enter your number" required></input>
+              <div className="input-box">{/* Phone Number */}
+                <span className="details" >Phone Number</span>
+                <input type="string" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} placeholder="Enter your number" required />
               </div>
-              <div class="input-box">{/* Password */}
-                <span class="details" >Password</span>
-                <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Enter your password" required></input>
+              <div className="input-box">{/* Password */}
+                <span className="details" >Password</span>
+                <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Enter your password" required />
               </div>
-              <div class="input-box">{/* Confirm Password */}
-                <span class="details"  >Confirm Password</span>
-                <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} placeholder="Confirm your password" required></input>
+              <div className="input-box">{/* Confirm Password */}
+                <span className="details"  >Confirm Password</span>
+                <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} placeholder="Confirm your password" required />
+                {!passwordMatch && (
+                  <p style={{ color: "red" }}>Passwords do not match!</p> // TO INFORM THE USER THAT THE PASSWORDS DO NOT MATCH
+                )}
               </div>
             </div>
             <div className="profile-picture">{/* profile-picture */}
-              <input id='image' type="file" name='profilePicture' value={formData.porfilePicutre} onChange={handleChange} accept='image/*' style={{ display: "none" }} required />
+              <input id='image' type="file" name="profilePicture" accept="image/*" style={{ display: "none" }} onChange={handleChange} required />
               <label htmlFor="image">
                 <p>Upload your Photo here</p>
-                <img src="/assets/upload-image.png" alt="add profile picture" />
+                <img src="/assets/upload-image.png" alt="" />
               </label>
             </div>
-            <div class="button">
-              <input type="submit" value="Register"></input>
+            {formData.profilePicture && (
+            <img
+              src={URL.createObjectURL(formData.profilePicture)}
+              alt=""
+              style={{ maxWidth: "80px" }}
+            />
+          )}
+            <div className="button">
+            <button type="submit" disabled={!passwordMatch}>Register</button>
             </div>
           </form>
           <span className='already-signedUP'>Already have an account? <a href="/login">log in here</a></span>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   )
 }
 

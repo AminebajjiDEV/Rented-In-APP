@@ -102,7 +102,8 @@ $background-gradient: linear-gradient(135deg, #1F214D, #50366F,#BF3475, #EE6C45,
       border-color: $background-gradient;
       width: 60%;
       margin: auto;
-
+      display: flex;
+      justify-content: center;
       label {
         display: flex;
         justify-content: center;
@@ -124,7 +125,7 @@ $background-gradient: linear-gradient(135deg, #1F214D, #50366F,#BF3475, #EE6C45,
       height: 45px;
       margin: 35px 0;
 
-      input {
+      button {
         height: 100%;
         width: 100%;
         border-radius: 5px;

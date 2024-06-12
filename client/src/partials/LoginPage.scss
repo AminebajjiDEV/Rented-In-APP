@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
 
+
+$background-gradient: linear-gradient(to right, rgb(182, 244, 146), rgb(51, 139, 147)); 
+$secondary-color: rgb(101, 223, 73);
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +10,7 @@
   font-family: "Open Sans", sans-serif;
 }
 
-.login {
+.login-section {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -16,7 +19,7 @@
   min-height: 100vh;
   width: 100%;
   padding: 0 10px;
-  background: url("../../public/assets/test4.jpg") center;
+  background: url("../../public/assets/login.jpg") center;
 
   &::before {
     content: "";
@@ -30,14 +33,13 @@
   }
 }
 
-.wrapper {
+.login-container {
   width: 400px;
   border-radius: 8px;
   padding: 30px;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(5px);
 
   a {
     color: #efefef;
@@ -58,6 +60,15 @@ h2 {
   font-size: 2rem;
   margin-bottom: 20px;
   color: #fff;
+}
+
+hr {
+  margin: auto;
+  height: 5px;
+  width: 50%;
+  border-radius: 5px;
+  border-style: none;
+  background: $background-gradient
 }
 
 .input-field {
@@ -94,29 +105,9 @@ h2 {
   }
 }
 
-.forget {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 25px 0 35px 0;
-  color: #fff;
-
-  #remember {
-    accent-color: #fff;
-  }
-
-  label {
-    display: flex;
-    align-items: center;
-
-    p {
-      margin-left: 8px;
-      color: #fff;
-    }
-  }
-}
 
 button {
+  margin-top: 10px;
   background: #fff;
   color: #000;
   font-weight: 600;
@@ -131,13 +122,26 @@ button {
   &:hover {
     color: #fff;
     border-color: #fff;
-    background: linear-gradient(109.6deg, rgb(0, 0, 0) 11.2%, rgb(11, 132, 145) 91.1%);  }
+    background: $background-gradient;
+  }
 }
 
 .register-newUser {
   text-align: center;
   margin-top: 30px;
-  p{
+
+  p {
     color: #fff;
   }
+
+  a {
+    font-weight: 500;
+    text-decoration: underline;
+    color: #fff;
+
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+
 }

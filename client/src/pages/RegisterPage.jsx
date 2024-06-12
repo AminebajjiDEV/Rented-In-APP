@@ -50,10 +50,15 @@ const RegisterPage = () => {
       })
 
       if (response.ok) {
-        navigate("/login")
+        console.log("Registration successful, navigating to /login");
+        navigate("/login");
+      } else {
+        // Log error response for debugging
+        const errorData = await response.json();
+        console.error("Registration failed with status:", response.status, errorData);
       }
     } catch (err) {
-      console.log("Registration failed", err.message)
+      console.log("Registration failed", err.message);
     }
 
   }
@@ -65,6 +70,7 @@ const RegisterPage = () => {
     <div className="register">
       <div className="register_container">
         <div className="title">Registration</div>
+        <hr />
         <div className="register_content">
           <form className="register_content_form" onSubmit={handleSubmit}>
             <div className="user-details">
@@ -113,9 +119,15 @@ const RegisterPage = () => {
             <div className="button">
             <button type="submit" disabled={!passwordMatch}>Register</button>
             </div>
+            
+            <div className='already-signedUP'>
+            Already have an account? <a href="/login">log in here</a>
+          </div>
+
           </form>
-          <span className='already-signedUP'>Already have an account? <a href="/login">log in here</a></span>
+          
         </div>
+        
       </div >
     </div >
   )

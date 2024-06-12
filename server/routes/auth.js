@@ -67,4 +67,34 @@ router.post("/register", upload.single("profilePicture"), async (req, res) => {
     }
 });
 
-module.exports = router   // TO FIX THE ".Router()" ERR & EXPORT THE FILE TO 'index.js'
+/* USER REGISTER */
+router.post("/login", async (req, res) => {
+    try {
+        /* TO COLLECT INFORMATION FROM THE FORM */
+        const { email, password } = req.body
+
+        /* TO VERIFY IF THE USER ALREADY EXISTS */
+        const user = await USER.findOne({ email });
+        if (!user) {
+            return res.status(409).json({ message: "User doesn't exist!" })
+        }
+
+        /* TO COMPARE THE INPUTED PASSWORD WITH THE HASHED PASSWORD ALREADY STORED */
+        const passMatch = await bcrypt.compare(password, user.password)
+        if (!passMatch) {
+            return res.status(400).json({ message: "Invalid Password!" })
+        }
+
+        /* TO GENERATE THE JWT TOKEN */
+        const token = jwt.sign({ id: user._id }, process.env.JWT_secret)
+        delete user.password
+        res.status(200).json({ token, user })
+
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ error: err.message })
+    }
+
+})
+
+module.exports = router;   // TO FIX THE ".Router()" ERR & EXPORT THE FILE TO 'index.js'

@@ -10,6 +10,7 @@ $background-gradient: linear-gradient(135deg, #1F214D, #50366F,#BF3475, #EE6C45,
   padding: 0;
   box-sizing: border-box;
   font-family: $primary-font;
+  
 }
 
 .register {
@@ -26,30 +27,31 @@ $background-gradient: linear-gradient(135deg, #1F214D, #50366F,#BF3475, #EE6C45,
 .register_container {
   max-width: 700px;
   width: 100%;
-  background-color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(2.5px);
   padding: 25px 30px;
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 
   .title {
+    color: #fff;
     display: flex;
     justify-content: center;
     font-size: 25px;
     font-weight: 500;
     position: relative;
-
-
-    &::before {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      height: 3px;
-      width: 50%;
-      border-radius: 5px;
-      background: $background-gradient;
-    }
   }
+  hr {
+    margin: auto;
+    height: 5px;
+    width: 50%;
+    border-radius: 5px;
+    border-style: none;
+    background: $background-gradient;
+  }
+ 
 }
+
 
 .register_content {
   display: flex;
@@ -58,6 +60,7 @@ $background-gradient: linear-gradient(135deg, #1F214D, #50366F,#BF3475, #EE6C45,
 
   form {
     .user-details {
+      color: #fff;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
@@ -68,6 +71,7 @@ $background-gradient: linear-gradient(135deg, #1F214D, #50366F,#BF3475, #EE6C45,
         width: calc(100% / 2 - 20px);
 
         span.details {
+          color: #fff;
           display: block;
           font-weight: 500;
           margin-bottom: 5px;
@@ -99,7 +103,7 @@ $background-gradient: linear-gradient(135deg, #1F214D, #50366F,#BF3475, #EE6C45,
     .profile-picture {
       border-radius: 5px;
       border: solid;
-      border-color: $background-gradient;
+      border-color:#fff0ba8f;
       width: 60%;
       margin: auto;
       display: flex;
@@ -112,6 +116,7 @@ $background-gradient: linear-gradient(135deg, #1F214D, #50366F,#BF3475, #EE6C45,
 
         p {
           margin: 5px;
+          color: #fff;
         }
 
         img {
@@ -130,27 +135,36 @@ $background-gradient: linear-gradient(135deg, #1F214D, #50366F,#BF3475, #EE6C45,
         width: 100%;
         border-radius: 5px;
         border: none;
-        color: #fff;
+        color: #000000;
         font-size: 18px;
         font-weight: 500;
         letter-spacing: 1px;
         cursor: pointer;
         transition: all 0.3s ease;
-        background: $background-gradient;
+        background: #fff;
 
         &:hover {
           background: linear-gradient(-135deg,  #1F214D, #50366F,#BF3475, #EE6C45, #FFCE61,#FFE58A);
         }
       }
     }
-
-    .already-signeUP {
+    .already-signedUP {
+      color: #fff;
       font-size: 18px;
       font-weight: 500;
+      margin: auto;
+  
+      a{
+        color: #fff;
+        font-weight: 600;
+  
+        &:hover {
+          color: #ffb9a4;
+        }
+      }
     }
-
   }
-
+  
 }
 
 // media queries for mobile responsiveness
@@ -182,6 +196,10 @@ $background-gradient: linear-gradient(135deg, #1F214D, #50366F,#BF3475, #EE6C45,
     .user-details {
       width: 100%;
     }
+  }
+  .already-signedUP {
+    width: 65%;
+    margin: auto;
   }
 }
 

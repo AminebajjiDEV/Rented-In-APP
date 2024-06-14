@@ -54,7 +54,7 @@ const LoginPage = () => {
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
             <label>Enter your password</label>
           </div>
-          <button type="submit">Log In</button>
+          <button className="register-button" type="submit">Log In</button>
           <div className="register-newUser">
             <p>Don't have an account? <a href="/register">register here</a></p>
           </div>

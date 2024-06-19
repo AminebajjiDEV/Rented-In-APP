@@ -1,0 +1,74 @@
+@import "./breakpoints.scss";
+
+$pinkred: #F8395A;
+
+.header_container {
+    margin: auto;
+    min-height: 55vh;
+    width: 100%;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.367),
+            rgba(0, 0, 0, 0.89)),
+        url("../../public/assets/header-banner.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.header_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+
+    &_host {
+        color: #fff;
+        margin: 50px auto;
+        text-transform: capitalize;
+    }
+
+    &_become_host {
+        text-align: center;
+        margin:auto;
+        a {
+            color: $pinkred;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &_welcome_message {
+        color: #fff;
+        margin: 50px auto;
+    }
+
+    &_website_desc {
+        margin: 0 auto 20px;
+        text-align: center;
+        width: 80%;
+        color: #fff;
+        font-size: x-large;
+        font-weight: 700;
+
+    }
+
+    &_join_message {
+        text-align: center;
+        margin: 20px auto;
+        color: #fff;
+
+        a {
+            color: $pinkred;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+}

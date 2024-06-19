@@ -47,11 +47,11 @@ const LoginPage = () => {
           <h2>Login</h2>
           <hr />
           <div className="input-field">
-            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} required/>
+            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} required />
             <label>Enter your email</label>
           </div>
           <div className="input-field">
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
             <label>Enter your password</label>
           </div>
           <button className="register-button" type="submit">Log In</button>

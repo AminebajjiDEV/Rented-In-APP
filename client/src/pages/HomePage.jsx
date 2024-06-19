@@ -1,9 +1,9 @@
-import NavBar from "../components/NavBar" // we didn't use {NavBar} bcs `NavBar`is a default export
+import Header from "../components/Header"// we didn't use {Header} bcs `Header`is a default export
 
 const Home = () => {
     return(
        <>
-       <NavBar />
+       <Header />
        </>
     )
 }

@@ -74,13 +74,13 @@ const RegisterPage = () => {
         <div className="register_content">
           <form className="register_content_form" onSubmit={handleSubmit}>
             <div className="user-details">
-              <div className="input-box">{/* Last Name */}
-                <span className="details" >Last Name</span>
-                <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Enter your last name" required />
-              </div>
               <div className="input-box">{/* First Name */}
                 <span className="details" >First Name</span>
                 <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="Enter your first name" required />
+              </div>
+              <div className="input-box">{/* Last Name */}
+                <span className="details" >Last Name</span>
+                <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Enter your last name" required />
               </div>
               <div className="input-box">{/* Email */}
                 <span className="details" >Email</span>
@@ -110,24 +110,24 @@ const RegisterPage = () => {
               </label>
             </div>
             {formData.profilePicture && (
-            <img
-              src={URL.createObjectURL(formData.profilePicture)}
-              alt=""
-              style={{ maxWidth: "80px" }}
-            />
-          )}
+              <img
+                src={URL.createObjectURL(formData.profilePicture)}
+                alt=""
+                style={{ maxWidth: "80px", borderRadius:"40px", display: "block", margin: "5px auto 0", }} // styling for the profile picture
+              />
+            )}
             <div className="button">
-            <button type="submit" disabled={!passwordMatch}>Register</button>
+              <button type="submit" disabled={!passwordMatch}>Register</button>
             </div>
-            
+
             <div className='already-signedUP'>
-            Already have an account? <a href="/login">log in here</a>
-          </div>
+              Already have an account? <a href="/login">log in here</a>
+            </div>
 
           </form>
-          
+
         </div>
-        
+
       </div >
     </div >
   )

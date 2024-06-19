@@ -2,9 +2,11 @@
 
 $pinkred: #F8395A;
 $blue: #24355A;
-$lightgrey: #F7F8F8;
-$grey: #bdb9b9;
-$darkgrey: #969393;
+$lightgrey: #c1c1c1;
+$grey: #7c7c7c;
+$darkgrey: #5b5b5b;
+
+
 
 .navbar {
   padding: 10px 60px;
@@ -23,27 +25,35 @@ $darkgrey: #969393;
   }
 
   &_search {
-    border: 1px solid $grey;
+    border: 1px solid #fff;
     border-radius: 30px;
     height: 50px;
     padding: 0px 20px;
     display: flex;
     gap: 40px;
     align-items: center;
+    background:  #ffffff0c;
 
     input {
       border: none;
       outline: none;
+      background: transparent;
+      color: #F7F8F8;
     }
 
     &:hover {
-      box-shadow: 0 3px 10px 2px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 3px 10px 3px rgba(0, 0, 0, 0.677);
+    }
+
+    .navbar_search_svg {
+      fill: #F7F8F8;
     }
 
     @include lg {
       display: none;
     }
   }
+
   &_right {
     display: flex;
     align-items: center;
@@ -51,16 +61,12 @@ $darkgrey: #969393;
 
     .host {
       text-decoration: none;
-      color: $blue;
+      color: #fff;
       font-weight: 700;
       cursor: pointer;
 
       &:hover {
         color: $pinkred;
-      }
-
-      @include sm {
-        display: none;
       }
     }
 
@@ -84,6 +90,7 @@ $darkgrey: #969393;
         height: 40px;
       }
     }
+
     &_dropdownmenu {
       position: absolute;
       background-color: white;

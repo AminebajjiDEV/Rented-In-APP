@@ -10,11 +10,11 @@ const Header = () => {
         <div className="header_container">
             <NavBar />
             <div className="header_content">
-                {user ? (<><h2 href="/creat-listing" className="header_content_host">Welcome back {user.firstName}!</h2>
+                {user ? (<><h2 href="/create-listing" className="header_content_host">Welcome back {user.firstName}!</h2>
                     <span className="header_content_website_desc"> Search for your perfect house in just one click! Whether it's for vacations or business trips,
                         Rented-In has what you need.
                         Don't forget, you can also host your own place and welcome guests from our vibrant community.</span>
-                        <h2 className="header_content_become_host"><a href="/creat-listing">Become A Host</a></h2>
+                        <h2 className="header_content_become_host"><a href="/create-listing">Become A Host</a></h2>
                         </>
                 ) : (<>
                     <h2 className="header_content_welcome_message">Welcome To Rented-In!</h2>

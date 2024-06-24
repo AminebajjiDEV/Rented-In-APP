@@ -51,7 +51,7 @@ $secondary-color: rgb(101, 223, 73);
   }
 }
 
-form {
+.login_form {
   display: flex;
   flex-direction: column;
 }
@@ -62,7 +62,7 @@ h2 {
   color: #fff;
 }
 
-hr {
+.loginHr {
   margin: auto;
   height: 5px;
   width: 50%;

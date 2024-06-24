@@ -24,7 +24,7 @@ const NavBar = () => {
                 </div>
 
                 <div className="navbar_right">
-                    {user ? (<a href="/creat-listing" className="host">Become A Host</a>
+                    {user ? (<a href="/create-listing" className="host">Become A Host</a>
                     ) : (
                         <a href="/login" className="host" >Become A Host</a>)}
                     <button className="navbar_right_account" onClick={() => setDropDownMenu(!dropDownMenu)}>

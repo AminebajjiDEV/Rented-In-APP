@@ -43,9 +43,9 @@ const LoginPage = () => {
   return (
     <div className="login-section">
       <div className="login-container">
-        <form onSubmit={handleSubmit}>
+        <form  className="login_form" onSubmit={handleSubmit}>
           <h2>Login</h2>
-          <hr />
+          <hr className='loginHr' />
           <div className="input-field">
             <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} required />
             <label>Enter your email</label>

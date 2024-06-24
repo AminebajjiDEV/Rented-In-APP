@@ -6,6 +6,7 @@ const app = express()
 
 
 const authentificationRoutes = require("./routes/auth.js")
+const listingRoutes = require("./routes/listing.js")
 
 app.use(cors())
 app.use(express.json())
@@ -13,7 +14,7 @@ app.use(express.static("public"))
 
 /* ROUTES */
  app.use("/auth", authentificationRoutes)
-
+app.use("/listings", listingRoutes)
 
 
 /* MONGOOSE SETUP */

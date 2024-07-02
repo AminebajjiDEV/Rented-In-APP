@@ -1,0 +1,52 @@
+@import "./breakpoints.scss";
+
+$pinkred: #F8395A;
+$blue: #24355A;
+$lightgrey: #efefef;
+$grey: #7c7c7c;
+$darkgrey: #626262;
+
+.booking-header {
+  
+  margin-bottom: 40px;
+  padding-top: 5px;
+  width: 100vw;
+  background: url("../../public/assets/booking.jpg") center;
+}
+.triplist-container {
+  padding: 10px;
+  width: 100vw;
+  height: 100vh;
+  margin: 40px 10px;
+  color: $blue;
+
+  h2 {
+    color: $blue;
+    margin: 20px
+  }
+
+  hr {
+    margin: 10px auto;
+    border: solid;
+    border-color: $pinkred;
+    border-radius: 5px;
+    height: 5px;
+    width: 50%;
+    }
+
+    @include sm {
+      margin: 40px 50px;
+    }
+  }
+
+  .booking-list {
+    margin: 40px auto 100px;
+    padding: 10px;
+    display: flex;
+flex-wrap: wrap;
+    gap: 25px;
+
+    @include xl {
+      padding: 0 20px 120px;
+    }
+  }

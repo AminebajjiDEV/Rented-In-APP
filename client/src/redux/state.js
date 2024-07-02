@@ -14,11 +14,17 @@ export const userSlice = createSlice({
             state.token = action.payload.token
         },
         setLogout: (state) => {
-            state.user= null
-            state.token=null
+            state.user = null
+            state.token = null
+        },
+        setListings: (state, action) => {
+            state.listings = action.payload.listings
+        },
+        setTripList: (state, action) => {
+            state.user.tripList =  action.payload
         }
     }
 })
 
-export const { setLogin, setLogout } = userSlice.actions
+export const { setLogin, setLogout, setListings, setTripList } = userSlice.actions
 export default userSlice.reducer

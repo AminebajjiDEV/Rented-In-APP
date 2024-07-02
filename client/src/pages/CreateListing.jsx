@@ -186,7 +186,7 @@ const CreateListing = () => {
                         <div className="half">
                             <div className="location">
                                 <p>Apartment, Suite, etc. (if applicable)</p>
-                                <input type="text" placeholder="Apt, Suite, etc. (if applicable)" name="aptSuite" value={formLocation.aptSuite} onChange={handleChangeLocation} required />
+                                <input type="text" placeholder="Apt, Suite, etc. (if applicable)" name="aptSuite" value={formLocation.aptSuite} onChange={handleChangeLocation} />
                             </div>
                             <div className="location">
                                 <p>City</p>

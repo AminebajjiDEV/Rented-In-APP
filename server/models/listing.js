@@ -4,7 +4,7 @@ const listingSchema = new mongoose.Schema(
     {
         creator: {
             type: mongoose.Schema.Types.ObjectId,
-            ref:"user",
+            ref:"User",  // refers to the user in mongoose.model("User", userSchema)
         },
         category: {
             type: String,
@@ -79,6 +79,6 @@ const listingSchema = new mongoose.Schema(
     {timestamps: true}/* to record the time the listing was created */
 )
 
-const listing = mongoose.model("Listing", listingSchema)
+const Listing = mongoose.model("Listing", listingSchema)
 
-module.exports = listing
+module.exports = Listing

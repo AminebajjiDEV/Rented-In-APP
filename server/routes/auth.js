@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs") // for password encryption
 const jwt = require("jsonwebtoken")
 const multer = require("multer")
 
-const USER = require("../models/user.js")
+const User = require("../models/user.js")
 
 /* CONFIGURING MULTER FOR UPLOADED FILES STORAGE */
 const storage = multer.diskStorage({
@@ -35,7 +35,7 @@ router.post("/register", upload.single("profilePicture"), async (req, res) => {
         const profilePicturePath = profilePicture.path
 
         /* TO CHECK IF THE USER ALREADY EXISTS */
-        const existingUser = await USER.findOne({ email, phoneNumber })
+        const existingUser = await User.findOne({ email, phoneNumber })
         if (existingUser) {
             return res.status(400).json({ message: "USER ALREADY EXISTS!" })
         }
@@ -45,7 +45,7 @@ router.post("/register", upload.single("profilePicture"), async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, salt)
 
         /* TO CREATE NEW USER */
-        const newUser = new USER({
+        const newUser = new User({
             lastName,
             firstName,
             email,
@@ -74,7 +74,7 @@ router.post("/login", async (req, res) => {
         const { email, password } = req.body
 
         /* TO VERIFY IF THE USER ALREADY EXISTS */
-        const user = await USER.findOne({ email });
+        const user = await User.findOne({ email });
         if (!user) {
             return res.status(409).json({ message: "User doesn't exist!" })
         }

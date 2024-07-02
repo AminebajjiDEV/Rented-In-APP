@@ -2,8 +2,8 @@ const router = require("express").Router()
 const multer = require("multer")
 
 
-const listing = require("../models/listing")
-const user = require("../models/user")
+const Listing = require("../models/listing")
+const User = require("../models/user")
 /* Configuring Multer for file Uploads */
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -13,6 +13,7 @@ const storage = multer.diskStorage({
         cb(null, file.originalname); // to use the original file name
     },
 });
+
 
 const upload = multer({ storage })
 
@@ -48,7 +49,7 @@ router.post("/create", upload.array("listingPhotos"), async (req, res) => {
         }
         const listingPhotoPaths = listingPhotos.map((file) => file.path)
 
-        const newListing = new listing(
+        const newListing = new Listing(
             {
                 creator,
                 category,
@@ -72,6 +73,7 @@ router.post("/create", upload.array("listingPhotos"), async (req, res) => {
             })
 
         await newListing.save()
+
         res.status(200).json(newListing)
     } catch (err) {
         res.status(400).json({ message: "Failed to create listing!", error: err.message })
@@ -86,16 +88,33 @@ router.get("/", async (req, res) => {
     try {
         let listings
         if (qCategory) {
-            listings = await listing.find({ category: qCategory }).populate("creator")
+            listings = await Listing.find({ category: qCategory }).populate("creator")
         } else {
-            listings = await listing.find()
+            listings = await Listing.find().populate("creator")
         }
+        res.status(200).json(listings)
     } catch (err) {
-        res.status(404).json({ message: "Fail to fetch listings", error: err.message })
+        res.status(404).json({ message: "Failed to fetch listings", error: err.message })
         console.log(err)
     }
 
 
+})
+
+/* Fetch Details of Listed Properties */
+
+router.get("/:listingId", async (req, res) => {
+    try {
+        const { listingId } = req.params;
+        // Use populate to fetch the full details of the creator
+        const listing = await Listing.findById(listingId).populate("creator");
+        if (!listing) {
+            return res.status(404).json({ message: "Listing not found!" });
+        }
+        res.status(202).json(listing);
+    } catch (err) {
+res.status(404).json({ message: "Listing not found!", error: err.message})
+    }
 })
 
 module.exports = router

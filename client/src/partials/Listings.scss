@@ -1,0 +1,71 @@
+@import "./breakpoints.scss";
+
+$pinkred: #F8395A;
+$blue: #24355A;
+$lightgrey: #efefef;
+$grey: #7c7c7c;
+$darkgrey: #626262;
+
+h3{
+  color: $blue;
+  font-size: 40px;
+  font-weight: 800;
+  margin: 15px;
+}
+.category-list {
+  padding: 50px 80px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 60px;
+
+  @include sm {
+    padding: 50px 20px;
+  }
+
+  .category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ 
+    cursor: pointer;
+
+    &_icon {
+      font-size: 30px;
+      color: $darkgrey;
+    }
+
+    p {
+      font-size: 18px;
+      font-weight: 700;
+      color: $darkgrey;
+    }
+
+    &:hover {
+      color: $pinkred;
+    
+    }
+  }
+
+  .selected {
+    color: $pinkred;
+    border: solid;
+    border-color: #F8395A;
+  }
+}
+
+.loader {
+  margin: auto;
+}
+
+.listings {
+  padding: 0 60px 120px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+
+  @include lg {
+    padding: 0 20px 120px;
+  }
+}

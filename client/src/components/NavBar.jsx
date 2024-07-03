@@ -48,11 +48,11 @@ const NavBar = () => {
                     )}
                     {dropDownMenu && user && (
                         <div className="navbar_right_dropdownmenu">
-                            <Link to="">Trip List</Link>
+                            <Link to="/:userId/trips">Your Bookings</Link>
                             <Link to="">Wish List</Link>
                             <Link to="">Property List</Link>
                             <Link to="">Reservation List</Link>
-                            <Link to="">Become A Host</Link>
+                            <Link to="/create-listing">Become A Host</Link>
 
                             <Link to="/" onClick={() => {
                                 dispatch(setLogout())

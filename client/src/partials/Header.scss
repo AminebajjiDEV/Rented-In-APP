@@ -7,9 +7,9 @@ $pinkred: #F8395A;
     min-height: 55vh;
     width: 100%;
     background-image:
-        linear-gradient(rgba(0, 0, 0, 0.367),
-            rgba(0, 0, 0, 0.89)),
-        url("../../public/assets/header-banner.png");
+        linear-gradient(rgba(0, 0, 0, 0.245),
+            rgba(0, 0, 0, 0.521)),
+        url("../../public/assets/header-banner.jpg");
     background-size: cover;
     background-position: center;
 }
@@ -26,17 +26,22 @@ $pinkred: #F8395A;
         color: #fff;
         margin: 50px auto;
         text-transform: capitalize;
+        text-shadow: 1px 1px 2px #181818;
     }
 
     &_become_host {
         text-align: center;
         margin:auto;
         a {
-            color: $pinkred;
+            color: #fff;
             text-decoration: none;
+            background-color: #F8395A;
+            padding: 10px;
+            border-radius: 20px;
+            box-shadow: 1px 1px 2px #2d2d2d;
 
             &:hover {
-                text-decoration: underline;
+                box-shadow: 0 1px 10px 3px rgba(255, 255, 255, 0.677);
             }
         }
     }
@@ -44,6 +49,7 @@ $pinkred: #F8395A;
     &_welcome_message {
         color: #fff;
         margin: 50px auto;
+        text-shadow: 1px 1px 2px #181818;
     }
 
     &_website_desc {
@@ -53,6 +59,7 @@ $pinkred: #F8395A;
         color: #fff;
         font-size: x-large;
         font-weight: 700;
+        text-shadow: 1px 1px 2px #181818;
 
     }
 
@@ -60,11 +67,11 @@ $pinkred: #F8395A;
         text-align: center;
         margin: 20px auto;
         color: #fff;
-
+        text-shadow: 1px 1px 2px #181818;
         a {
             color: $pinkred;
             text-decoration: none;
-
+            text-shadow: 1px 1px 2px #181818;
             &:hover {
                 text-decoration: underline;
             }

@@ -1,10 +1,47 @@
 import "../partials/Categories.scss"
 import { Link } from "react-router-dom";
 import { categories } from "../data";
-
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 
 const Categories = () => {
+
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    };
+
     return (
 
         <div className="categories_content">
@@ -12,10 +49,10 @@ const Categories = () => {
             <span>At Rented-In, find the perfect stays for every journey.
                 From cozy retreats to spacious homes.
                 Explore and discover your ideal destination with ease!</span>
-            <div className="categories_list">
-                {categories?.slice(1, 7).map((category, index) =>
-                    <Link to={`/listings/category/${category.label}`}>
-                        <div className="category" key={index}>
+                <Slider {...settings} className="categories_list">
+                {categories?.slice(1, 9).map((category, index) => (
+                    <Link to={`/listings/category/${category.label}`} key={index}>
+                        <div className="category">
                             <img src={category.img} alt={category.label} />
                             <div className="overlay"></div>
                             <div className="category_icon">
@@ -24,8 +61,8 @@ const Categories = () => {
                             </div>
                         </div>
                     </Link>
-                )}
-            </div>
+                ))}
+            </Slider>
         </div>
 
     )

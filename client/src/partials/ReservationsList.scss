@@ -12,7 +12,7 @@ $darkgrey: #626262;
 }
 
 
-.booking-container {
+.reservation-container {
   padding: 10px;
   color: $blue;
 
@@ -36,12 +36,12 @@ $darkgrey: #626262;
   }
 }
 
-.booking-content {
+.reservation-content {
   border-radius: 10px;
   background-color: #efefef80;
   height: 100vh;
 
-  .booking-list {
+  .reservation-list {
     display: flex;
     flex-wrap: wrap;
     padding: 5px;

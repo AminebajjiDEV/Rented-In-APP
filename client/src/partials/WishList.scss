@@ -6,18 +6,19 @@ $lightgrey: #efefef;
 $grey: #7c7c7c;
 $darkgrey: #626262;
 
+
 .main-container {
   margin: 0;
   height: 100vh;
 }
 
-
-.booking-container {
+.wishList-container {
   padding: 10px;
   color: $blue;
 
 
-  h2 {
+
+  h1 {
     text-align: center;
     color: $blue;
     margin: 20px auto;
@@ -36,12 +37,12 @@ $darkgrey: #626262;
   }
 }
 
-.booking-content {
+.wishlist-content {
   border-radius: 10px;
   background-color: #efefef80;
   height: 100vh;
 
-  .booking-list {
+  .wishlist-list {
     display: flex;
     flex-wrap: wrap;
     padding: 5px;

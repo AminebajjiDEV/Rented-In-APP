@@ -1,12 +1,11 @@
-import "../partials/Listings.scss"
 import { categories } from "../data";
 import ListingCard from "./ListingCard"
 import Loader from "./Loader"
 import { setListings } from "../redux/state"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-
-
+import { IconContext } from "react-icons"; // for icons styling
+import "../partials/Listings.scss"
 
 const Listings = () => {
   const dispatch = useDispatch();
@@ -26,10 +25,10 @@ const Listings = () => {
           method: "GET",
         }
       );
-
       const data = await response.json();
       dispatch(setListings({ listings: data }));
       setLoading(false);
+
     } catch (err) {
       console.log("Fetch Listings Failed", err.message);
     }
@@ -44,17 +43,29 @@ const Listings = () => {
   return (
     <>
       <div className="category_container">
-        <h3>Find the category what's perfect for you</h3>
+        <hr className="divider" />
+        <h3 className="listing-title">Find the category that's perfect for you</h3>
         <div className="category-list">
+
           {categories?.map((category, index) => (
             <div className={`category ${category.label === selectedCategory ? "selected" : ""}`}
               key={index} onClick={() => setSelectedCategory(category.label)}>
-              <div className='category_icon'>{category.icon}</div>
+              <div className='category_icon'>
+                <IconContext.Provider value={{ className: "listing-icon" }}>
+                  <div>
+                    {category.icon}
+                  </div>
+                </IconContext.Provider>
+              </div>
               <p>{category.label}</p>
             </div>
           ))}
         </div>
-      </div>
+        <hr className="divider" />
+        <div className="listing-details">
+          <h1>Available Listings:</h1>
+        </div>
+      
       {loading ? (
         <Loader className="loader" />
       ) : (
@@ -70,7 +81,7 @@ const Listings = () => {
               category,
               type,
               price,
-              booking=false
+              booking = false
             }) => (
               <ListingCard
                 listingId={_id}
@@ -88,6 +99,7 @@ const Listings = () => {
           )}
         </div>
       )}
+      </div>
     </>
   )
 }

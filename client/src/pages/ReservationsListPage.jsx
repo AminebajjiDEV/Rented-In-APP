@@ -1,33 +1,36 @@
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import NavBar from "../components/NavBar"
 import Loader from "../components/Loader"
 import ListingCard from "../components/ListingCard"
-import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { setTripList } from "../redux/state"
-import "../partials/booking.scss"
+import { setReservationList } from "../redux/state"
+import "../partials/ReservationsList.scss"
 
 
-const TripList = () => {
+
+const ReservationsList = () => {
     const [loading, setLoading] = useState(true)
-    const tripList = useSelector((state) => state.user.tripList)
     const userId = useSelector((state) => state.user._id)
+    const reservationList = useSelector((state) => state.user.reservationList)
     const dispatch = useDispatch()
-    const getTripList = async () => {
+
+    const getReservationList = async () => {
         try {
-            const response = await fetch(`http://localhost:3001/users/${userId}/bookings`, {
+            const response = await fetch(
+                `http://localhost:3001/users/${userId}/reservations-list`, {
                 method: "GET"
             })
             const data = await response.json();
-            dispatch(setTripList(data));
+            dispatch(setReservationList(data));
             setLoading(false);
 
         } catch (err) {
-            console.log("Fetching Trip List Failed", err.message)
+            console.log("Fetching Reseravtions List Failed", err.message)
         }
     }
 
     useEffect(() => {
-        getTripList();
+        getReservationList();
     }, []);
 
     return loading ? (
@@ -35,15 +38,15 @@ const TripList = () => {
         <>
             <div className="main-container">
                 <NavBar />
-                <div className="booking-container">
-                    <h2 className="">-Your Bookings-</h2>
+                <div className="reservation-container">
+                    <h2 className="">-Reservations-</h2>
                     <hr />
-                    <div className="booking-content">
-                        <div className="booking-list">
-                            {tripList?.map(({ listingId, hostId, startDate, endDate, totalPrice, booking = true }) =>
+                    <div className="reservation-content">
+                        <div className="reservation-list">
+                            {reservationList?.map(({ listingId, hostId, startDate, endDate, totalPrice, booking = true }) => (
                                 <ListingCard
                                     listingId={listingId._id}
-                                    creator ={hostId._id}
+                                    creator={hostId._id}
                                     listingPhotoPaths={listingId.listingPhotoPaths}
                                     city={listingId.city}
                                     province={listingId.province}
@@ -54,7 +57,7 @@ const TripList = () => {
                                     totalPrice={totalPrice}
                                     booking={booking}
                                 />
-                            )}
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -63,4 +66,4 @@ const TripList = () => {
     )
 }
 
-export default TripList
+export default ReservationsList

@@ -1,15 +1,23 @@
-import "../partials/PropertyDetails.scss"
+
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { facilities } from "../data"
 import Loader from "../components/Loader"
 import NavBar from "../components/NavBar"
 
+//react slider
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 // for using the calendar component
 import { DateRange } from "react-date-range"
 import "react-date-range/dist/styles.css"
 import "react-date-range/dist/theme/default.css"
 import { useSelector } from "react-redux"
+
+// personalized scss
+import "../partials/PropertyDetails.scss"
 
 
 const PropertyDetails = () => {
@@ -67,10 +75,10 @@ const PropertyDetails = () => {
                     body: JSON.stringify(bookingForm)
                 })
             if (response.ok) {
-                navigate(`/${customerId}/trips`)
+                navigate(`/${customerId}/my-bookings`)
             }
         } catch (err) {
-console.log("Submiting Bokking Failed!", err.message)
+            console.log("Submiting Bokking Failed!", err.message)
         }
     }
 
@@ -78,6 +86,39 @@ console.log("Submiting Bokking Failed!", err.message)
     const end = new Date(dateRange[0].endDate)
     const nightCount = Math.round((end - start) / (1000 * 60 * 60 * 24)) // Calculate the difference in days unit
 
+    const settings = { // listing image slider
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    };
 
     return loading ? (
         <Loader />
@@ -86,60 +127,76 @@ console.log("Submiting Bokking Failed!", err.message)
             <NavBar />
 
             <div className="listing-container">
-                <div className="listing-title">
-                    <h1>{listing.title}</h1>
+                <div className="property-title">
+                    <h1 className="title">{listing.city}. {listing.country} {listing.title}</h1>
                     <div className="fav-button"></div>
                 </div>
-                <div className="photos">
-                    {listing.listingPhotoPaths?.map((photo) => (
-                        <img src={`http://localhost:3001/${photo.replace("public", "")}`} alt="property-photos" />
+                <Slider {...settings} className="photos">
+                    {listing.listingPhotoPaths?.slice(0, 4).map((photo) => (
+                        <div className="images">
+                            <img src={`http://localhost:3001/${photo.replace("public", "")}`} alt="property-photos" />
+                        </div>
+
                     ))}
-                </div>
-                <h2>{listing.type} in {listing.city}, {listing.country}</h2>
-                <p>{listing.guestCount}: guests - {listing.bedroomCount}: bedroom(s) - {listing.bedCount}: bed(s) - {listing.bathroomCount}: bathroom(s)</p>
-                <hr />
-                <div className="creator-profile">
-                    <img src={`http://localhost:3001/${listing.creator.profilePicturePath.replace("public", "")}`} alt="" />
-                    <h3>Hosted by {listing.creator.firstName} {listing.creator.lastName}</h3>
-                </div>
-                <hr />
+                </Slider>
+                <div className="listing-content">
+                    <div className="listing-informations">
+                        <h2 className="listing-info">{listing.type} in {listing.city}, {listing.country}</h2>
+                        <p className="listing-info-p">{listing.guestCount}: guests -  {listing.bedroomCount}: bedroom(s) -  {listing.bedCount}: bed(s) -  {listing.bathroomCount}: bathroom(s)</p>
 
-                <h3>About this place</h3>
-                <p>{listing.description}</p>
+                        <div className="about">
+                            <h3>About this place</h3>
+                            <p>{listing.description}</p>
+                            <hr />
+                        </div>
 
-                <hr />
 
-                <h3>{listing.highlight}</h3>
-                <p>{listing.highlightDesc}</p>
+                        <div className="highlits">
+                            <h2>The key Highlight of this place : {listing.highlight}</h2>
+                            <p>{listing.highlightDesc}</p>
+                        </div>
 
-                <hr />
+                        <div className="creator-profile">
+                            <img src={`http://localhost:3001/${listing.creator.profilePicturePath.replace("public", "")}`} alt="" />
+                            <h3>Hosted by {listing.creator.firstName} {listing.creator.lastName}</h3>
+                        </div>
 
-                <div className="booking">
-                    <h2>What this place offers</h2>
-                    <div className="amenities">
-                        {listing.amenities[0].split(",").map((item, index) => (
-                            <div className="facility" key={index}>
-                                <div className="facility_icon">
-                                    {facilities.find((facility) => facility.name === item)?.icon}
-                                </div>
-                                <p>{item}</p>
+
+                        <div className="amenities">
+                            <div className="amenities_title">
+                                <h2>What this place offers</h2>
                             </div>
-                        ))}
+                            <div className="amenities_content">
+                                {listing.amenities[0].split(",").map((item, index) => (
+                                    <div className="facility" key={index}>
+                                        <div className="facility_icon">
+                                            {facilities.find((facility) => facility.name === item)?.icon}
+                                        </div>
+                                        <p>{item}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
-                    <h2>Select check-in date</h2>
-                    <div className="date-range-calendar">
-                        <DateRange ranges={dateRange} onChange={handleSelect} />
-                        {nightCount > 1 ? (
-                            <h2>${listing.price} x ${nightCount} nights</h2>
-                        ) : (
-                            <h2>${listing.price} x ${nightCount} night</h2>
-                        )}
 
-                        <h2>Total:  ${listing.price * nightCount}</h2>
-                        <h2>Check-In:  ${dateRange[0].startDate.toDateString()}</h2>
-                        <h2>Check-Out:  ${dateRange[0].endDate.toDateString()}</h2>
 
-                        <button className="book-button" type="submit" onClick={handleSubmit}>Book Now!</button>
+                    <div className="booking">
+                        <div className="booking_title">
+                            <h2>Select check-in date</h2>
+                        </div>
+                        <div className="date-range-calendar">
+                            <DateRange ranges={dateRange} onChange={handleSelect} />
+                            <h2>Check-In:  {dateRange[0].startDate.toDateString()}</h2>
+                            <h2>Check-Out: {dateRange[0].endDate.toDateString()}</h2>
+                            {nightCount > 1 ? (
+                                <h2>${listing.price} x {nightCount} nights</h2>
+                            ) : (
+                                <h2>${listing.price} x {nightCount} night</h2>
+                            )}
+                            <h2>Total:  ${listing.price * nightCount}</h2>
+
+                            <button className="book-button" type="submit" onClick={handleSubmit}>Book Now!</button>
+                        </div>
                     </div>
                 </div>
             </div>

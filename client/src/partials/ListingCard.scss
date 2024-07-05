@@ -2,11 +2,12 @@
 
 $pinkred: #F8395A;
 $blue: #24355A;
-$lightgrey: #e3e3e3;
-$grey: #7c7c7c;
+$lightgrey: #e3e3e381;
+$grey: #cfcfcfd8;
 $darkgrey: #626262;
 
 .card-container {
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,13 +15,11 @@ $darkgrey: #626262;
   cursor: pointer;
   padding: 10px;
   border-radius: 10px;
+  background-color:$lightgrey;
 
 
   &:hover {
-    background-color: $lightgrey;
-    border: 2px;
-    border-style: solid;
-    border-color: #F8395A;
+    background-color: $grey;
   }
 
   .slider-container {

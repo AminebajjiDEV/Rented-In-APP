@@ -5,13 +5,7 @@ $primary-color: #9b59b6;
 $secondary-color: #71b7e6;
 $background-gradient: linear-gradient(135deg, #1F214D, #50366F,#BF3475, #EE6C45, #FFCE61,#FFE58A);
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: $primary-font;
-  
-}
+
 
 .register {
   width: 100vw;
@@ -34,6 +28,7 @@ $background-gradient: linear-gradient(135deg, #1F214D, #50366F,#BF3475, #EE6C45,
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 
   .title {
+    font-family: $primary-font;
     color: #fff;
     display: flex;
     justify-content: center;
@@ -60,6 +55,7 @@ $background-gradient: linear-gradient(135deg, #1F214D, #50366F,#BF3475, #EE6C45,
 
   form {
     .user-details {
+      font-family: $primary-font;
       color: #fff;
       display: flex;
       flex-wrap: wrap;
@@ -67,10 +63,12 @@ $background-gradient: linear-gradient(135deg, #1F214D, #50366F,#BF3475, #EE6C45,
       margin: 20px 0 12px 0;
 
       .input-box {
+        font-family: $primary-font;
         margin-bottom: 15px;
         width: calc(100% / 2 - 20px);
 
         span.details {
+          font-family: $primary-font;
           color: #fff;
           display: block;
           font-weight: 500;
@@ -78,6 +76,7 @@ $background-gradient: linear-gradient(135deg, #1F214D, #50366F,#BF3475, #EE6C45,
         }
 
         input {
+          font-family: $primary-font;
           height: 45px;
           width: 100%;
           outline: none;
@@ -109,6 +108,7 @@ $background-gradient: linear-gradient(135deg, #1F214D, #50366F,#BF3475, #EE6C45,
       display: flex;
       justify-content: center;
       label {
+        font-family: $primary-font;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -142,6 +142,7 @@ $background-gradient: linear-gradient(135deg, #1F214D, #50366F,#BF3475, #EE6C45,
         cursor: pointer;
         transition: all 0.3s ease;
         background: #fff;
+        font-family: $primary-font;
 
         &:hover {
           background: linear-gradient(-135deg,  #1F214D, #50366F,#BF3475, #EE6C45, #FFCE61,#FFE58A);
@@ -149,12 +150,14 @@ $background-gradient: linear-gradient(135deg, #1F214D, #50366F,#BF3475, #EE6C45,
       }
     }
     .already-signedUP {
+      
       color: #fff;
       font-size: 18px;
       font-weight: 500;
       margin: auto;
   
       a{
+        font-family: $primary-font;
         color: #fff;
         font-weight: 600;
   

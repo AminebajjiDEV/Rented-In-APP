@@ -3,7 +3,12 @@ import "../partials/Loader.scss"
 
 const Loader = () => {
   return (
-    <div class="loader"></div>
+    <div className="loader-container">
+      <div className="loader"></div>
+      <span>Please wait a couple seconds...</span>
+
+    </div>
+
   )
 }
 

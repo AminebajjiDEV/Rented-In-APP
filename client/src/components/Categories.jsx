@@ -1,14 +1,16 @@
-import "../partials/Categories.scss"
 import { Link } from "react-router-dom";
 import { categories } from "../data";
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "../partials/Categories.scss"
+import { IconContext } from "react-icons"; // for icons styling
+
 
 
 const Categories = () => {
 
-    const settings = {
+    const settings = { // categories slider
         dots: true,
         infinite: true,
         speed: 500,
@@ -49,20 +51,26 @@ const Categories = () => {
             <span>At Rented-In, find the perfect stays for every journey.
                 From cozy retreats to spacious homes.
                 Explore and discover your ideal destination with ease!</span>
-                <Slider {...settings} className="categories_list">
+            <Slider {...settings} className="categories_list">
                 {categories?.slice(1, 9).map((category, index) => (
-                    <Link to={`/listings/category/${category.label}`} key={index}>
+                    <Link to={`/listings/category/${category.label}`} key={index} value={{ className: "link" }}>
                         <div className="category">
                             <img src={category.img} alt={category.label} />
                             <div className="overlay"></div>
                             <div className="category_icon">
-                                {category.icon}
+                                <IconContext.Provider value={{ className: "icon" }}>
+                                    <div>
+                                        {category.icon}
+                                    </div>
+                                </IconContext.Provider>
                                 <p>{category.label}</p>
                             </div>
+
                         </div>
                     </Link>
                 ))}
             </Slider>
+
         </div>
 
     )

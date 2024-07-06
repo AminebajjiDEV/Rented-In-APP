@@ -23,7 +23,7 @@ const NavBar = () => {
             </a>
             <div className="navbar_search">
                 <input type="text" placeholder='Search...' value={search} onChange={(e) => setSearch(e.target.value)} />
-                <IconButton disabled={search === ""}>
+                <IconButton >
                     <Search className="navbar_search_svg" onClick={() => {navigate(`/listings/search/${search}`)}} />
                 </IconButton>
             </div>

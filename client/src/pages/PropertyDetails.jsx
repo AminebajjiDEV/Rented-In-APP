@@ -199,8 +199,9 @@ const PropertyDetails = () => {
                         </div>
                     </div>
                 </div>
-                <Footer />
+
             </div>
+            <Footer />
         </>
     )
 }

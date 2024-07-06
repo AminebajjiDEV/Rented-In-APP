@@ -410,8 +410,9 @@ const CreateListing = () => {
                         </button>
                     </div>
                 </form>
-                <Footer />
+                
             </div>
+            <Footer />
         </>
     )
 }

@@ -1,9 +1,9 @@
-
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { facilities } from "../data"
 import Loader from "../components/Loader"
 import NavBar from "../components/NavBar"
+import Footer from "../components/Footer"
 
 //react slider
 import Slider from 'react-slick';
@@ -199,6 +199,7 @@ const PropertyDetails = () => {
                         </div>
                     </div>
                 </div>
+                <Footer />
             </div>
         </>
     )

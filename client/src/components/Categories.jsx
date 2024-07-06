@@ -3,8 +3,10 @@ import { categories } from "../data";
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "../partials/Categories.scss"
 import { IconContext } from "react-icons"; // for icons styling
+import "../partials/Categories.scss"
+import Footer from "../components/Footer"
+
 
 
 
@@ -70,7 +72,7 @@ const Categories = () => {
                     </Link>
                 ))}
             </Slider>
-
+         
         </div>
 
     )

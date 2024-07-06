@@ -12,7 +12,16 @@ $darkgrey: #626262;
 }
 
 .listings {
-  background-color: rgba(230, 248, 255, 0.596);
+  padding: 0 60px 120px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+
+  @include lg {
+    padding: 0 20px 120px;
+  }
+
 }
 
 .divider {
@@ -85,18 +94,4 @@ $darkgrey: #626262;
     text-shadow: 1px 1px 2px #fff;
     text-align: center;
   }
-}
-
-.listings {
-  padding: 0 60px 120px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 5px;
-
-  @include lg {
-    padding: 0 20px 120px;
-  }
-
- 
 }

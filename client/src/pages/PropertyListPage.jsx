@@ -2,8 +2,9 @@ import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import NavBar from "../components/NavBar"
 import Loader from "../components/Loader"
+import Footer from "../components/Footer"
 import ListingCard from "../components/ListingCard"
-import {setPropertyList} from "../redux/state"
+import { setPropertyList } from "../redux/state"
 import "../partials/PropertyList.scss"
 
 const PropertyListPage = () => {
@@ -70,6 +71,7 @@ const PropertyListPage = () => {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     </>
   )

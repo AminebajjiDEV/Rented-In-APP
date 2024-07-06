@@ -81,7 +81,7 @@ router.post("/create", upload.array("listingPhotos"), async (req, res) => {
     }
 });
 
-/* fetch listing using the GET method */
+/* fetch listing BY CATEGORY */
 
 router.get("/", async (req, res) => {
     const qCategory = req.query.category
@@ -101,6 +101,38 @@ router.get("/", async (req, res) => {
 
 })
 
+
+/* fetch listing BY SEARCHING INPUT */
+
+router.get("/search/:search", async (req, res) => {
+    const { search } = req.params
+
+    try {
+        let listings = []
+
+        if (search === "all") {
+            listings = await Listing.find().populate("creator")
+        } else {
+            listings = await Listing.find({
+                $or: [
+                    // $regex Regular expressions is a mongoDb operator that let's you use search patterns to match character combinations in strings
+                    { category: { $regex: search, $options: "i" } },
+                    { title: { $regex: search, $options: "i" } },
+                ]
+            }).populate("creator")
+        }
+
+        res.status(200).json(listings)
+    } catch (err) {
+        res.status(404).json({ message: "Fail to fetch listings", error: err.message })
+        console.log(err)
+    }
+})
+
+
+
+
+
 /* Fetch Details of Listed Properties */
 
 router.get("/:listingId", async (req, res) => {
@@ -113,7 +145,7 @@ router.get("/:listingId", async (req, res) => {
         }
         res.status(202).json(listing);
     } catch (err) {
-res.status(404).json({ message: "Listing not found!", error: err.message})
+        res.status(404).json({ message: "Listing not found!", error: err.message })
     }
 })
 

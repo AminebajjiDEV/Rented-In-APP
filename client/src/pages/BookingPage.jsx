@@ -1,5 +1,6 @@
 import NavBar from "../components/NavBar"
 import Loader from "../components/Loader"
+import Footer from "../components/Footer"
 import ListingCard from "../components/ListingCard"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
@@ -58,6 +59,7 @@ const TripList = () => {
                         </div>
                     </div>
                 </div>
+                <Footer />
             </div>
         </>
     )

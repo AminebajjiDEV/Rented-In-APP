@@ -1,5 +1,7 @@
 import "../partials/CreateListing.scss"
 import NavBar from "../components/NavBar"
+import Footer from "../components/Footer"
+import Loader from "../components/Loader"
 import { categories, types, facilities } from "../data"
 import { useState } from "react";/*for creating a state variable and a function to update it */
 import { useSelector } from "react-redux"; /* for selecting and retrieving state from the Redux store  */
@@ -10,6 +12,7 @@ import { RemoveCircleOutline, AddCircleOutline } from "@mui/icons-material"; /* 
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"; /* This package enables smooth and customizable drag-and-drop functionality for adding pictures */
 
 const CreateListing = () => {
+    const [loading, setLoading] = useState(true);
     const [category, setCategory] = useState("");
     const [type, setType] = useState("");
 
@@ -407,7 +410,7 @@ const CreateListing = () => {
                         </button>
                     </div>
                 </form>
-
+                <Footer />
             </div>
         </>
     )

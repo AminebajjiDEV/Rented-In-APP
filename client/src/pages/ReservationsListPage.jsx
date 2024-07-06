@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import NavBar from "../components/NavBar"
 import Loader from "../components/Loader"
+import Footer from "../components/Footer"
 import ListingCard from "../components/ListingCard"
 import { setReservationList } from "../redux/state"
 import "../partials/ReservationsList.scss"
@@ -61,6 +62,7 @@ const ReservationsList = () => {
                         </div>
                     </div>
                 </div>
+                <Footer />
             </div>
         </>
     )

@@ -12,7 +12,7 @@ $darkgrey: #626262;
 }
 
 .listings {
-  padding: 0 60px 120px;
+  padding: 40px 50px 120px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -87,7 +87,11 @@ $darkgrey: #626262;
     border-color: #F8395A;
     background-color: $lightgrey;
   }
-  .listing-details .h1{
+
+}
+
+.listing-details {
+  .listingT {
     color: rgb(34, 34, 34);
     font-size: 30px;
     font-weight: 800;

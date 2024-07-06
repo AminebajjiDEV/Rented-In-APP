@@ -124,84 +124,94 @@ const PropertyDetails = () => {
         <Loader />
     ) : (
         <>
-            <NavBar />
+            <div className="propertyDetails-container">
+                <NavBar />
 
-            <div className="listing-container">
-                <div className="property-title">
-                    <h1 className="title">{listing.city}. {listing.country} {listing.title}</h1>
-                    <div className="fav-button"></div>
-                </div>
-                <Slider {...settings} className="photos">
-                    {listing.listingPhotoPaths?.slice(0, 4).map((photo) => (
-                        <div className="images">
-                            <img src={`http://localhost:3001/${photo.replace("public", "")}`} alt="property-photos" />
+                <div className="listing-container">
+                    <div className="listing-content">
+                        
+                    <div className="propertyTitle-container">
+                        <div className="property-title">
+                            <h3 className="title">{listing.city}, {listing.country}. {listing.title}</h3>
+                            <div className="fav-button"></div>
                         </div>
+                        <Slider {...settings} className="photos">
+                            {listing.listingPhotoPaths?.slice(0, 4).map((photo) => (
+                                <div className="images">
+                                    <img src={`http://localhost:3001/${photo.replace("public", "")}`} alt="property-photos" />
+                                </div>
 
-                    ))}
-                </Slider>
-                <div className="listing-content">
-                    <div className="listing-informations">
-                        <h2 className="listing-info">{listing.type} in {listing.city}, {listing.country}</h2>
-                        <p className="listing-info-p">{listing.guestCount}: guests -  {listing.bedroomCount}: bedroom(s) -  {listing.bedCount}: bed(s) -  {listing.bathroomCount}: bathroom(s)</p>
+                            ))}
+                        </Slider>
+                    </div>
+                        <div className="informations-booking">
 
-                        <div className="about">
-                            <h3>About this place</h3>
-                            <p>{listing.description}</p>
-                            <hr />
-                        </div>
+                            <div className="listing-informations">
 
+                                <h2 className="listing-info">{listing.type} in {listing.city}, {listing.country}</h2>
+                                <p className="listing-info-p">{listing.guestCount}: guests -  {listing.bedroomCount}: bedroom(s) -  {listing.bedCount}: bed(s) -  {listing.bathroomCount}: bathroom(s)</p>
 
-                        <div className="highlits">
-                            <h2>The key Highlight of this place : {listing.highlight}</h2>
-                            <p>{listing.highlightDesc}</p>
-                        </div>
-
-                        <div className="creator-profile">
-                            <img src={`http://localhost:3001/${listing.creator.profilePicturePath.replace("public", "")}`} alt="" />
-                            <h3>Hosted by {listing.creator.firstName} {listing.creator.lastName}</h3>
-                        </div>
+                                <div className="about">
+                                    <h3>About this place</h3>
+                                    <p>{listing.description}</p>
+                                    <hr />
+                                </div>
 
 
-                        <div className="amenities">
-                            <div className="amenities_title">
-                                <h2>What this place offers</h2>
-                            </div>
-                            <div className="amenities_content">
-                                {listing.amenities[0].split(",").map((item, index) => (
-                                    <div className="facility" key={index}>
-                                        <div className="facility_icon">
-                                            {facilities.find((facility) => facility.name === item)?.icon}
-                                        </div>
-                                        <p>{item}</p>
+                                <div className="highlits">
+                                    <h2>The key Highlight of this place : {listing.highlight}</h2>
+                                    <p>{listing.highlightDesc}</p>
+                                </div>
+
+                                <div className="creator-profile">
+                                    <img src={`http://localhost:3001/${listing.creator.profilePicturePath.replace("public", "")}`} alt="" />
+                                    <h3>Hosted by {listing.creator.firstName} {listing.creator.lastName}</h3>
+                                </div>
+
+
+                                <div className="amenities">
+                                    <div className="amenities_title">
+                                        <h2>What this place offers</h2>
                                     </div>
-                                ))}
+                                    <div className="amenities_content">
+                                        {listing.amenities[0].split(",").map((item, index) => (
+                                            <div className="facility" key={index}>
+                                                <div className="facility_icon">
+                                                    {facilities.find((facility) => facility.name === item)?.icon}
+                                                </div>
+                                                <p>{item}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div className="booking">
+                                <div className="booking_title">
+                                    <h2>Select check-in date</h2>
+                                </div>
+                                <div className="date-range-calendar">
+                                    <DateRange ranges={dateRange} onChange={handleSelect} />
+                                    <h2>Check-In:  {dateRange[0].startDate.toDateString()}</h2>
+                                    <h2>Check-Out: {dateRange[0].endDate.toDateString()}</h2>
+                                    {nightCount > 1 ? (
+                                        <h2>${listing.price} x {nightCount} nights</h2>
+                                    ) : (
+                                        <h2>${listing.price} x {nightCount} night</h2>
+                                    )}
+                                    <h2>Total:  ${listing.price * nightCount}</h2>
+
+                                    <button className="book-button" type="submit" onClick={handleSubmit}>Book Now!</button>
+                                </div>
                             </div>
                         </div>
+
                     </div>
 
-
-                    <div className="booking">
-                        <div className="booking_title">
-                            <h2>Select check-in date</h2>
-                        </div>
-                        <div className="date-range-calendar">
-                            <DateRange ranges={dateRange} onChange={handleSelect} />
-                            <h2>Check-In:  {dateRange[0].startDate.toDateString()}</h2>
-                            <h2>Check-Out: {dateRange[0].endDate.toDateString()}</h2>
-                            {nightCount > 1 ? (
-                                <h2>${listing.price} x {nightCount} nights</h2>
-                            ) : (
-                                <h2>${listing.price} x {nightCount} night</h2>
-                            )}
-                            <h2>Total:  ${listing.price * nightCount}</h2>
-
-                            <button className="book-button" type="submit" onClick={handleSubmit}>Book Now!</button>
-                        </div>
-                    </div>
                 </div>
-
+                <Footer />
             </div>
-            <Footer />
         </>
     )
 }

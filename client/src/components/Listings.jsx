@@ -63,42 +63,43 @@ const Listings = () => {
         </div>
         <hr className="divider" />
         <div className="listing-details">
-          <h1>Available Listings:</h1>
-        </div>
-      
-      {loading ? (
-        <Loader className="loader" />
-      ) : (
-        <div className="listings">
-          {listings.map(
-            ({
-              _id,
-              creator,
-              listingPhotoPaths,
-              city,
-              province,
-              country,
-              category,
-              type,
-              price,
-              booking = false
-            }) => (
-              <ListingCard
-                listingId={_id}
-                creator={creator}
-                listingPhotoPaths={listingPhotoPaths}
-                city={city}
-                province={province}
-                country={country}
-                category={category}
-                type={type}
-                price={price}
-                booking={booking}
-              />
-            )
+          <h3 className="listingT">Available Listings</h3>
+
+
+          {loading ? (
+            <Loader className="loader" />
+          ) : (
+            <div className="listings">
+              {listings.map(
+                ({
+                  _id,
+                  creator,
+                  listingPhotoPaths,
+                  city,
+                  province,
+                  country,
+                  category,
+                  type,
+                  price,
+                  booking = false
+                }) => (
+                  <ListingCard
+                    listingId={_id}
+                    creator={creator}
+                    listingPhotoPaths={listingPhotoPaths}
+                    city={city}
+                    province={province}
+                    country={country}
+                    category={category}
+                    type={type}
+                    price={price}
+                    booking={booking}
+                  />
+                )
+              )}
+            </div>
           )}
         </div>
-      )}
       </div>
     </>
   )

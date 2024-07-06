@@ -83,7 +83,7 @@ const CreateListing = () => {
         description: "",
         highlight: "",
         highlightDesc: "",
-        price: 0,
+        price: "",
     });
 
     const handleChangeDescription = (e) => {
@@ -145,6 +145,7 @@ const CreateListing = () => {
     };
     return (
         <>
+        <div className="mainPage-Container">
             <NavBar />
 
             <div className="createListing_container">
@@ -154,8 +155,8 @@ const CreateListing = () => {
                 <form className="createListing-content" onSubmit={handlePost}>
 
                     <div className="createListing-content_step1">
-                        <h2>Step 1: Describe Your Property</h2>
-                        <hr />
+                        <h2>- Step 1: Describe Your Property</h2>
+
                         <h3>Select the category that best fits your property</h3>
                         <div className="category-list">
                             {categories?.map((item, index) => (
@@ -165,6 +166,7 @@ const CreateListing = () => {
                                 </div>
                             ))}
                         </div>
+                        <hr className="divideF" />
                         <h3>What kind of accommodations can your guests expect here?</h3>
                         <div className="type-list">
                             {types?.map((item, index) => (
@@ -177,39 +179,9 @@ const CreateListing = () => {
                                 </div>
                             ))}
                         </div>
-
-                        <h3>Where's your place located?</h3>
-                        <div className="full">
-                            <div className="location">
-                                <p>Street Address</p>
-                                <input type="text" placeholder="Street Address" name="streetAddress" value={formLocation.streetAddress} onChange={handleChangeLocation} required />
-                            </div>
-                        </div>
-
-                        <div className="half">
-                            <div className="location">
-                                <p>Apartment, Suite, etc. (if applicable)</p>
-                                <input type="text" placeholder="Apt, Suite, etc. (if applicable)" name="aptSuite" value={formLocation.aptSuite} onChange={handleChangeLocation} />
-                            </div>
-                            <div className="location">
-                                <p>City</p>
-                                <input type="text" placeholder="City" name="city" value={formLocation.city} onChange={handleChangeLocation} required />
-                            </div>
-                        </div>
-
-                        <div className="half">
-                            <div className="location">
-                                <p>Province</p>
-                                <input type="text" placeholder="Province" name="province" value={formLocation.province} onChange={handleChangeLocation} required />
-                            </div>
-                            <div className="location">
-                                <p>Country</p>
-                                <input type="text" placeholder="Country" name="country" value={formLocation.country} onChange={handleChangeLocation} required />
-                            </div>
-                        </div>
-
+                        <hr className="divideF" />
                         <h3>Provide an overview of your property</h3>
-                        <div className="basics">
+                        <div className="overview">
                             <div className="basic">
                                 <p>Guests</p>
                                 <div className="basic_count">
@@ -318,11 +290,42 @@ const CreateListing = () => {
                                 </div>
                             </div>
                         </div>
+                        
+                        <h3>Where's your place located?</h3>
+                        <div className="full">
+                            <div className="location">
+                                <p>Street Address</p>
+                                <input type="text" placeholder="Street Address" name="streetAddress" value={formLocation.streetAddress} onChange={handleChangeLocation} required />
+                            </div>
+                        </div>
+
+                        <div className="half">
+                            <div className="location">
+                                <p>Apartment, Suite, etc. (if applicable)</p>
+                                <input type="text" placeholder="Apt, Suite, etc. (if applicable)" name="aptSuite" value={formLocation.aptSuite} onChange={handleChangeLocation} />
+                            </div>
+                            <div className="location">
+                                <p>City</p>
+                                <input type="text" placeholder="City" name="city" value={formLocation.city} onChange={handleChangeLocation} required />
+                            </div>
+                        </div>
+
+                        <div className="half">
+                            <div className="location">
+                                <p>Province</p>
+                                <input type="text" placeholder="Province" name="province" value={formLocation.province} onChange={handleChangeLocation} required />
+                            </div>
+                            <div className="location">
+                                <p>Country</p>
+                                <input type="text" placeholder="Country" name="country" value={formLocation.country} onChange={handleChangeLocation} required />
+                            </div>
+                        </div>
+                        <hr className="divideF" />
+
                     </div>
 
                     <div className="createListing-content_step2">
-                        <h2>Step 2: Set your property apart from the rest</h2>
-                        <hr />
+                        <h2>- Step 2: Set your property apart from the rest</h2>
 
                         <h3>Share what your accommodation provides for guests</h3>
                         <div className="amenities">
@@ -334,6 +337,8 @@ const CreateListing = () => {
                                 </div>
                             ))}
                         </div>
+
+                        <hr className="divideF" />
                         <div className="upload_picture">
                             <h3>Upload images of your place</h3>
                             <DragDropContext onDragEnd={handleDragPhoto}>
@@ -383,7 +388,7 @@ const CreateListing = () => {
                                 </Droppable>
                             </DragDropContext>
                         </div>
-
+                        <hr className="divideF" />
                         <div className="property_desc">
                             <h3>What makes your property attractive and vibrant?</h3>
                             <div className="description">
@@ -410,9 +415,10 @@ const CreateListing = () => {
                         </button>
                     </div>
                 </form>
-                
+
             </div>
             <Footer />
+            </div>
         </>
     )
 }

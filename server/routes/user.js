@@ -48,7 +48,7 @@ router.patch("/:userId/:listingId", async (req, res) => {
 router.get("/:userId/properties-list", async (req, res) => {
     try {
         const { userId } = req.params
-        const properties = await Listing.find({ customerId: userId }).populate("creator")
+        const properties = await Listing.find({ creator: userId }).populate("creator")
         res.status(202).json(properties)
     } catch (err) {
         res.status(404).json({ message: "Can not find Properties List!", error: err.message })

@@ -130,9 +130,6 @@ router.get("/search/:search", async (req, res) => {
 })
 
 
-
-
-
 /* Fetch Details of Listed Properties */
 
 router.get("/:listingId", async (req, res) => {

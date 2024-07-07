@@ -67,7 +67,7 @@ router.post("/register", upload.single("profilePicture"), async (req, res) => {
     }
 });
 
-/* USER REGISTER */
+/* USER LOGIN */
 router.post("/login", async (req, res) => {
     try {
         /* TO COLLECT INFORMATION FROM THE FORM */

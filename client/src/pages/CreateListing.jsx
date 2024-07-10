@@ -1,7 +1,6 @@
 import "../partials/CreateListing.scss"
 import NavBar from "../components/NavBar"
 import Footer from "../components/Footer"
-import Loader from "../components/Loader"
 import { categories, types, facilities } from "../data"
 import { useState } from "react";/*for creating a state variable and a function to update it */
 import { useSelector } from "react-redux"; /* for selecting and retrieving state from the Redux store  */

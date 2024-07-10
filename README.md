@@ -96,16 +96,19 @@ Open your browser and navigate to http://localhost:3000
 
 ## Screenshots
 - Home Page
+  
 ![App Screenshot](https://github.com/AminebajjiDEV/Rented-In-APP/blob/main/client/public/assets/ScreenShots/Home%20page%20top.png)
 ![App Screenshot](https://github.com/AminebajjiDEV/Rented-In-APP/blob/main/client/public/assets/ScreenShots/Home%20page%20bottom.png)
 
 
 - Property Details page
+  
 ![App Screenshot](https://github.com/AminebajjiDEV/Rented-In-APP/blob/main/client/public/assets/ScreenShots/Property-Details%20Top.png)
 ![App Screenshot](https://github.com/AminebajjiDEV/Rented-In-APP/blob/main/client/public/assets/ScreenShots/Property-Details%20bottom.png)
 
 
 - Create Listings Page
+  
 ![App Screenshot](https://github.com/AminebajjiDEV/Rented-In-APP/blob/main/client/public/assets/ScreenShots/Create-listings%20Top.png)
 ![App Screenshot](https://github.com/AminebajjiDEV/Rented-In-APP/blob/main/client/public/assets/ScreenShots/Create-Listings%20Bottom.png)
 

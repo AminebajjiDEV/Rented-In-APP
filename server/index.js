@@ -22,7 +22,7 @@ app.use("/bookings", bookingRoutes)
 app.use("/users", userRoutes)
 
 /* MONGOOSE SETUP */
-const port = 3001;
+const port =  process.env.PORT || 3001;
 mongoose.connect(process.env.MONGO_URL, {
     dbName: "Rented-In",
     useNewUrlParser: true,

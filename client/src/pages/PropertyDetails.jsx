@@ -29,7 +29,7 @@ const PropertyDetails = () => {
 
     const getListingDetails = async () => {
         try {
-            const response = await fetch(`http://localhost:3001/listings/${listingId}`, { method: "GET", })
+            const response = await fetch(`https://rented-in.onrender.com/listings/${listingId}`, { method: "GET", })
             const data = await response.json()
             setListing(data)
             setLoading(false)
@@ -67,7 +67,7 @@ const PropertyDetails = () => {
                 endDate: dateRange[0].endDate.toDateString(),
                 totalPrice: listing.price * nightCount,
             }
-            const response = await fetch("http://localhost:3001/bookings/create",
+            const response = await fetch("https://rented-in.onrender.com/bookings/create",
                 {
                     method: "POST", headers: {
                         "Content-Type": "application/json",
@@ -138,7 +138,7 @@ const PropertyDetails = () => {
                         <Slider {...settings} className="photos">
                             {listing.listingPhotoPaths?.slice(0, 4).map((photo) => (
                                 <div className="images">
-                                    <img src={`http://localhost:3001/${photo.replace("public", "")}`} alt="property-photos" />
+                                    <img src={`https://rented-in.onrender.com/${photo.replace("public", "")}`} alt="property-photos" />
                                 </div>
 
                             ))}
@@ -164,7 +164,7 @@ const PropertyDetails = () => {
                                 </div>
 
                                 <div className="creator-profile">
-                                    <img src={`http://localhost:3001/${listing.creator.profilePicturePath.replace("public", "")}`} alt="" />
+                                    <img src={`https://rented-in.onrender.com/${listing.creator.profilePicturePath.replace("public", "")}`} alt="" />
                                     <h3>Hosted by {listing.creator.firstName} {listing.creator.lastName}</h3>
                                 </div>
 

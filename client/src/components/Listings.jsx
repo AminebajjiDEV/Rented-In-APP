@@ -19,8 +19,8 @@ const Listings = () => {
     try {
       const response = await fetch(
         selectedCategory !== "All"
-          ? `http://localhost:3001/listings?category=${selectedCategory}`
-          : "http://localhost:3001/listings",
+          ? `https://rented-in.onrender.com/listings?category=${selectedCategory}`
+          : "https://rented-in.onrender.com/listings",
         {
           method: "GET",
         }

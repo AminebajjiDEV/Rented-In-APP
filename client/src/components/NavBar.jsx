@@ -38,7 +38,7 @@ const NavBar = () => {
                         (<Person />
                         ) : ( // to replace the Person icon with the users own profile picture
                             <img
-                                src={`http://localhost:3001/${user.profilePicturePath.replace("public", "")}`}
+                                src={`https://rented-in.onrender.com/${user.profilePicturePath.replace("public", "")}`}
                                 alt=""
                                 style={{ objectFit: "cover", borderRadius: "50%" }}
                             />

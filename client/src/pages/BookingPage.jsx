@@ -15,7 +15,7 @@ const TripList = () => {
     const dispatch = useDispatch()
     const getTripList = async () => {
         try {
-            const response = await fetch(`http://localhost:3001/users/${userId}/bookings`, {
+            const response = await fetch(`https://rented-in.onrender.com/users/${userId}/bookings`, {
                 method: "GET"
             })
             const data = await response.json();

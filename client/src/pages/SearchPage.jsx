@@ -18,7 +18,7 @@ const SearchPage = () => {
     const getSearchListings = async () => {
         try {
             const response = await fetch(
-                `http://localhost:3001/listings/search/${search}`,
+                `https://rented-in.onrender.com/listings/search/${search}`,
                 {
                     method: "GET",
                 }
